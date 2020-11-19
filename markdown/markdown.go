@@ -6,6 +6,7 @@ package markdown
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"dagger.io/dagger"
 	"github.com/pkg/errors"
@@ -27,13 +28,16 @@ func Lint(ctx context.Context, client *dagger.Client, workdir *dagger.Directory,
 		WithMountedDirectory("/src", workdir).
 		WithWorkdir("/src")
 
-	container = container.Exec(dagger.ContainerExecOpts{
-		Args: append([]string{"markdownlint"}, config.files...),
-	})
+	commandLine := fmt.Sprintf("/home/nonroot/entrypoint.sh --output /tmp/errors --quiet %s || true", strings.Join(config.files, " "))
+	contents, err := container.Exec(dagger.ContainerExecOpts{
+		Args: []string{"sh", "-c", commandLine},
+	}).File("/tmp/errors").Contents(ctx)
 
-	_, err := container.ExitCode(ctx)
 	if err != nil {
 		return err
+	}
+	if len(contents) > 0 {
+		return errors.New(contents)
 	}
 
 	return nil
