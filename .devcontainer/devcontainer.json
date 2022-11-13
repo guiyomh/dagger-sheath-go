@@ -18,7 +18,10 @@
 				"go.toolsManagement.checkForUpdates": "local",
 				"go.useLanguageServer": true,
 				"go.gopath": "/go"
-			}
+			},
+			"extensions": [
+				"yzhang.markdown-all-in-one"
+			]
 		}
 	}
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
