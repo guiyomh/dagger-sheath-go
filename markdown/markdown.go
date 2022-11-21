@@ -1,7 +1,7 @@
 // Package markdown contains dagger helpers to manipulate markdown file
 package markdown
 
-//go:generate gomarkdoc --output {{.Dir}}/README.md ./...
+//go:generate gomarkdoc --config ../.gomarkdoc.yml --output {{.Dir}}/README.md ./...
 
 import (
 	"context"

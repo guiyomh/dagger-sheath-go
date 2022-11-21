@@ -1,0 +1,4 @@
+templateFile:
+  index: ../.templates/index.gotxt
+  example: ../.templates/example.gotxt
+  file: ../.templates/file.gotxt

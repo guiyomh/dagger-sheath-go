@@ -1,0 +1,11 @@
+# Default state for all rules
+default: true
+
+# MD010/no-hard-tabs - Hard tabs
+MD010: false
+
+# MD013/line-length - Line length
+MD013: false
+
+# MD033 - Inline HTML. Needed for tabs in docusaurus
+MD033: false

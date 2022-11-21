@@ -6,8 +6,9 @@
 		"ghcr.io/guiyomh/features/golangci-lint:0": {},
 		"ghcr.io/guiyomh/features/just:0": {},
 		"ghcr.io/guiyomh/features/vim:0": {},
+		"ghcr.io/guiyomh/features/gomarkdoc:0": {},
 		"ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {},
-		"ghcr.io/devcontainers/features/docker-in-docker:1": {}
+		"ghcr.io/devcontainers/features/docker-from-docker:1": {}
 	},
 	// Configure tool-specific properties.
 	"customizations": {
@@ -20,7 +21,9 @@
 				"go.gopath": "/go"
 			},
 			"extensions": [
-				"yzhang.markdown-all-in-one"
+				"yzhang.markdown-all-in-one",
+				"mhutchie.git-graph",
+				"DavidAnson.vscode-markdownlint"
 			]
 		}
 	}

@@ -1,8 +1,8 @@
 // Package svu contains dagger helpers to manage semantic version at ease.
-// It is base on Semantic Version Util (https://github.com/caarlos0/svu) is a tool to manage semantic versions
+// It is base on Semantic Version Util [https://github.com/caarlos0/svu] is a tool to manage semantic versions
 package svu
 
-//go:generate gomarkdoc --output {{.Dir}}/README.md ./...
+//go:generate gomarkdoc --config ../.gomarkdoc.yml --output {{.Dir}}/README.md ./...
 
 import (
 	"context"
