@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"dagger.io/dagger"
+	"github.com/hashicorp/go-multierror"
 	"github.com/pkg/errors"
 )
 
@@ -34,10 +35,16 @@ func Lint(ctx context.Context, client *dagger.Client, workdir *dagger.Directory,
 	}).File("/tmp/errors").Contents(ctx)
 
 	if err != nil {
-		return err
+		// file does not exist, the command exited properly
+		return nil
 	}
 	if len(contents) > 0 {
-		return errors.New(contents)
+		var errs error
+		lines := strings.Split(strings.ReplaceAll(contents, "\r\n", "\n"), "\n")
+		for _, line := range lines {
+			errs = multierror.Append(errs, errors.New(line))
+		}
+		return errs
 	}
 
 	return nil
